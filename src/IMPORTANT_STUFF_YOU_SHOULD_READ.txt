@@ -1,0 +1,35 @@
+Libraries needed:
+- Slick util
+- Lwjgl
+
+To set this up:
+1. The needed library .jar and native files are should in 'lib'. Copy and paste the 'wizatarhelperlibs' folder into your project 'lib' folder.
+2. Add this library .jar file into the 'wizatarhelperlibs' folder.
+3. Add the required libraries into your project. In IntelliJ IDEA:
+   a. Go to File > Project Structure
+   b. Click on 'Libraries'
+   c. Navigate to your 'lib' folder and select the 'wizatarhelperlibs' folder
+   d. Press 'Open'
+4. You are set!
+
+There are some classes that should be always called via game loop. This includes:
+- All individual com.wizatar08.helperlibrary.time.Timer instances you create should have the update() method called constantly.
+- All individual com.wizatar08.helperlibrary.ui.UI instances should have the update() method called constantly.
+- All individual com.wizatar08.helperlibrary.game.screenentity.Entity instances should have the update() method called constantly.
+update() in com.wizatar08.helperlibrary.time.Clock and update() in beginGameLoop() com.wizatar08.helperlibrary.screen.Renderer are covered in com.wizatar08.helperlibrary.control.Control. It is a good idea to call that method when booting up your project.
+
+Some features in this library needs to be set up when the program boots. Here is how they can be set up:
+
+Setup for com.wizatar08.helperlibrary.lang.Lang:
+Lang uses bundles to store all the keys and phrases in any language you need.
+You must call the init() method when the program boots up. You can do this in two ways:
+1. You set a default language and country
+2. If your program has a settings option, you can put in the path of a .properties file (all paths should start with 'src/'). The file must have a 'lang' option.
+Both options requires the location of the bundle used to store all the keys and phrases.
+
+Setup for com.wizatar08.helperlibrary.visuals.Drawer:
+If you want to draw text on the screen, you should set up a font to use. Do this by calling the setFont() method in com.wizatar08.helperlibrary.visuals.Drawer and passing in the path for a .ttf (Only TrueType fonts) file (all paths should start with 'src/').
+You should also set the path you use to all your image resource files. Do this by calling setDefaultImagePath() and passing in the path from the src package as a String (all paths should start with 'src/').
+
+Setup for com.wizatar08.helperlibrary.screen.Renderer:
+Call the begin() method. This will set all the settings needed for the screen.
